@@ -1,0 +1,17 @@
+<h1>Food 사이트 입니다.</h1>
+
+<ul id="lion-food"></ul>
+
+<script>
+        fetch('http://127.0.0.1:9100/backenlion/foods/')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('lion-food');
+                data.forEach(product => {
+                    const item = document.createElement('li');
+                    item.textContent = `${product.name} - $${product.price}`;
+                    list.appendChild(item);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
